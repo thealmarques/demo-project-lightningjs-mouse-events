@@ -1,0 +1,7 @@
+{
+  "name": "com.metrological.app.TicTacToe",
+  "description": "TicTacToe",
+  "dependencies": {
+    "wpe-lightning-sdk": "github:rdkcentral/Lightning-SDK#e90095718b1a76286ee56d425bb3930f13625959"
+  }
+}

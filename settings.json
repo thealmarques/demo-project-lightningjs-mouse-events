@@ -1,0 +1,18 @@
+{
+  "appSettings": {
+    "stage": {
+      "clearColor": "0x00000000",
+      "useImageWorker": true,
+      "precision": 1
+    },
+    "debug": false
+  },
+  "platformSettings": {
+    "path": "./static",
+    "log": false,
+    "showVersion": true,
+    "imageServerUrl": "//cdn.metrological.com/image",
+    "proxyUrl": "//cdn.metrological.com/proxy",
+    "textureMode": true
+  }
+}
