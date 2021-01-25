@@ -1,25 +1,24 @@
-// @ts-nocheck
 export class EventUtils {
-  static listen(tag, type) {
-    const findX = (element) => {
-      if (!element) {
-        return 0;
-      }
+  static findX(element) {
+    if (!element) {
+      return 0;
+    }
 
-      return element.x + findX(element.parent);
-    };
+    return element.x + this.findX(element.parent);
+  }
 
-    const findY = (element) => {
-      if (!element) {
-        return 0;
-      }
+  static findY(element) {
+    if (!element) {
+      return 0;
+    }
 
-      return element.y + findY(element.parent);
-    };
-    
+    return element.y + this.findY(element.parent);
+  }
+
+  static listen(tag, type, callback) {
     const isNode = (node, event) => {
-      let initialX = findX(node);
-      let initialY = findY(node);
+      let initialX = this.findX(node);
+      let initialY = this.findY(node);
 
       if (
         event.pageX >= initialX &&
@@ -27,12 +26,6 @@ export class EventUtils {
         event.pageY >= initialY &&
         node.finalH + initialY >= event.pageY
       ) {
-        if (node.ref) {
-          console.log(`${node.ref} was clicked. Good job`);
-        } else {
-          console.log(`This was clicked. Good job`);
-        }
-
         return true;
       }
 
@@ -40,25 +33,22 @@ export class EventUtils {
     }
 
 
-    const findElement = (element, event) => {
+    const searchElement = (element, event) => {
       if (isNode(element, event)) {
         return element;
-      } else {
-        if (element) {
-          element.children.forEach((child) => {
-            const found = findElement(child, event);
-            if (found) {
-              return found;
-            }
-          });
+      } 
+      
+      for(const child of element.children) {
+        const res = searchElement(child, event);
+        if (res) {
+          return res;
         }
       }
-      return null;
     };
 
     const handler = (event) => {
-      const element = findElement(tag, event);
-      console.log(element);
+      const element = searchElement(tag, event);
+      callback(element);
     };
 
     switch(type) {
@@ -77,5 +67,9 @@ export class EventUtils {
     }
   }
 
-  static getBoundingClientRect(tag) {}
+  static getBoundingClientRect(tag) {
+    const x = this.findX(tag);
+    const y = this.findY(tag);
+    console.log(`X: ${x}; Y: ${y}`);
+  }
 }

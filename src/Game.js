@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Lightning } from "wpe-lightning-sdk";
 import { EventUtils } from "./lib/EventUtils.js";
 import Utils from "./lib/GameUtils.js";
@@ -65,7 +64,15 @@ export default class Game extends Lightning.Component {
       });
     });
 
-    EventUtils.listen(this.tag("Game"), 'click');
+    EventUtils.listen(this.tag("Game"), 'mousemove', (element) => {
+      console.log('Hovering in Game.js');
+      const coordinates = EventUtils.getBoundingClientRect(this.tag("Field").children[0]);
+    });
+  }
+
+
+  calculatePlayerPosition() {
+
   }
 
   _reset() {

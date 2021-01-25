@@ -28,6 +28,9 @@ export default class Main extends Lightning.Component {
     }
 
     _active() {
-        EventUtils.listen(this.tag("Menu"), 'mousedown');
+        EventUtils.listen(this.tag("Menu"), 'click', (element) => {
+            console.log('Clicked in Main.js')
+            this.signal("select", {item: element});
+        });
     }
 }
