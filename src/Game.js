@@ -57,6 +57,7 @@ export default class Game extends Lightning.Component {
 
   _active() {
     this._reset();
+
     this.tag("Field").children.forEach((el, idx) => {
       el.setSmooth(idx < 2 ? "w" : "h", 900, {
         duration: 0.7,
@@ -64,15 +65,45 @@ export default class Game extends Lightning.Component {
       });
     });
 
-    EventUtils.listen(this.tag("Game"), 'mousemove', (element) => {
-      console.log('Hovering in Game.js');
-      const coordinates = EventUtils.getBoundingClientRect(this.tag("Field").children[0]);
+
+    EventUtils.listen(this.tag("Game"), 'mousemove', (_, event) => {
+      const idx = this.calculatePlayerPosition(event);
+      if (idx >= 0) {
+        this._setIndex(idx);
+      }
+    });
+
+    EventUtils.listen(this.tag("Game"), 'click', (_, event) => {
+      const idx = this.calculatePlayerPosition(event);
+      if (idx >= 0) {
+        this._setIndex(idx);
+        this._handleEnter();
+      }
     });
   }
 
 
-  calculatePlayerPosition() {
+  calculatePlayerPosition(event) {
+    const fieldCoordinates = EventUtils.getBoundingClientRect(this.tag("Field"));
 
+    let index = 0;
+    for (let row = 1; row <= 3; row++) {
+      for (let column = 1; column <= 3; column++) {
+        const startX = (column - 1) * 300 + fieldCoordinates.x;
+        const startY = (row - 1) * 300 + fieldCoordinates.y;
+        const endX = column * 300 + fieldCoordinates.x;
+        const endY = row * 300 + fieldCoordinates.y;
+
+        if (startX <= event.pageX &&
+            startY <= event.pageY &&
+            endX >= event.pageX &&
+            endY >= event.pageY) {
+              return index;
+            }
+            index++;
+      }
+    }
+    return -1;
   }
 
   _reset() {

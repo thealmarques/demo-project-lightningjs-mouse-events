@@ -48,7 +48,7 @@ export class EventUtils {
 
     const handler = (event) => {
       const element = searchElement(tag, event);
-      callback(element);
+      callback(element, event);
     };
 
     switch(type) {
@@ -70,6 +70,6 @@ export class EventUtils {
   static getBoundingClientRect(tag) {
     const x = this.findX(tag);
     const y = this.findY(tag);
-    console.log(`X: ${x}; Y: ${y}`);
+    return {x, y};
   }
 }

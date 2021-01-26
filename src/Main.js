@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Lightning } from "wpe-lightning-sdk";
 import { EventUtils } from "./lib/EventUtils.js";
 import Menu from "./menu/Menu.js";
@@ -28,7 +27,7 @@ export default class Main extends Lightning.Component {
     }
 
     _active() {
-        EventUtils.listen(this.tag("Menu"), 'click', (element) => {
+        EventUtils.listen(this.tag("Menu"), 'click', (element, _) => {
             console.log('Clicked in Main.js')
             this.signal("select", {item: element});
         });
