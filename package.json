@@ -1,7 +1,27 @@
 {
-  "name": "com.metrological.app.TicTacToe",
-  "description": "TicTacToe",
+  "name": "lightningjs-mouse-events",
+  "version": "1.0.0",
+  "description": "Mouse events library for lightningJS",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thealmarques/lightningjs-mouse-events.git"
+  },
+  "keywords": [
+    "lightningjs",
+    "mouse-events",
+    "javascript"
+  ],
+  "author": "thealmarques",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thealmarques/lightningjs-mouse-events/issues"
+  },
+  "homepage": "https://github.com/thealmarques/lightningjs-mouse-events#readme",
   "dependencies": {
-    "wpe-lightning-sdk": "github:rdkcentral/Lightning-SDK#e90095718b1a76286ee56d425bb3930f13625959"
+    "jest": "^26.6.3"
   }
 }
