@@ -38,10 +38,12 @@ export class EventUtils {
         return element;
       } 
       
-      for(const child of element.children) {
-        const res = searchElement(child, event);
-        if (res) {
-          return res;
+      if (element.children) {
+        for(const child of element.children) {
+          const res = searchElement(child, event);
+          if (res) {
+            return res;
+          }
         }
       }
     };
