@@ -60,7 +60,7 @@ export class EventUtils {
       case 'mousedown':
         window.onmousedown = handler;
         break;
-      case 'onmouseup':
+      case 'mouseup':
         window.onmouseup = handler;
         break;
       case 'mousemove':
