@@ -1,6 +1,9 @@
 language: node_js
 node_js:
-  - 5.1
+  - 15.5.1
 before_script:
-  - npm install -g bower
-  - bower install
+  - npm install -g yarn
+script:
+  - yarn install
+  - echo "Running tests..."
+  - yarn test
