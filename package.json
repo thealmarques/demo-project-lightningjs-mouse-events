@@ -13,7 +13,9 @@
   "keywords": [
     "lightningjs",
     "mouse-events",
-    "javascript"
+    "javascript",
+    "tv",
+    "webgl"
   ],
   "author": "thealmarques",
   "license": "ISC",
