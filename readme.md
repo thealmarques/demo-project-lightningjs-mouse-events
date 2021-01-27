@@ -17,7 +17,7 @@ In the [LightningJS docs](https://rdkcentral.github.io/Lightning/docs/introducti
 
 For example,
 ```sh
-MouseEvents.listen(this.tag("Menu"), 'click', (element, _) => {
+MouseEvents.listen(this.tag("Menu"), 'click', (element, event) => {
     // Write your logic
 });
 ```
