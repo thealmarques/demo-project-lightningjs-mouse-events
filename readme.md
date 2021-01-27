@@ -45,7 +45,7 @@ $ lng dev
 
 Visit localhost:8080 and voilá.
 
-<img src="resources/demo.gif" height="40%" width="30%"/>
+<img src="resources/demo.gif" height="80%" width="100%"/>
 
 ### Contributing
 
