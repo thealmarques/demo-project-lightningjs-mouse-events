@@ -2,6 +2,7 @@ import { Lightning, Utils } from "wpe-lightning-sdk";
 import Splash from "./Splash.js";
 import Main from "./Main.js";
 import Game from "./Game.js";
+import { MouseEvents } from "../../src/index.js";
 
 export default class App extends Lightning.Component {
 
@@ -27,6 +28,14 @@ export default class App extends Lightning.Component {
                 type: Game, alpha: 0
             }
         };
+    }
+
+    _active() {
+        MouseEvents.listen(this.tag("Logo"), 'click', (element, _) => {
+            if (element && element.ref && element.ref === 'Logo') {
+                this._setState("Main");
+            }
+        });
     }
 
     _setup() {

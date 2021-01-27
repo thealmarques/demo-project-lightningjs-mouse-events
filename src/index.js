@@ -1,24 +1,24 @@
-export class EventUtils {
-  static findX(element) {
+export class MouseEvents {
+  static findXPos(element) {
     if (!element) {
       return 0;
     }
 
-    return element.x + this.findX(element.parent);
+    return element.x + this.findXPos(element.parent);
   }
 
-  static findY(element) {
+  static findYPos(element) {
     if (!element) {
       return 0;
     }
 
-    return element.y + this.findY(element.parent);
+    return element.y + this.findYPos(element.parent);
   }
 
   static listen(tag, type, callback) {
-    const isNode = (node, event) => {
-      let initialX = this.findX(node);
-      let initialY = this.findY(node);
+    const isIn = (node, event) => {
+      let initialX = this.findXPos(node);
+      let initialY = this.findYPos(node);
 
       if (
         event.pageX >= initialX &&
@@ -34,7 +34,7 @@ export class EventUtils {
 
 
     const searchElement = (element, event) => {
-      if (isNode(element, event)) {
+      if (isIn(element, event)) {
         return element;
       } 
       
@@ -53,25 +53,12 @@ export class EventUtils {
       callback(element, event);
     };
 
-    switch(type) {
-      case 'click':
-        window.onclick = handler;
-        break;
-      case 'mousedown':
-        window.onmousedown = handler;
-        break;
-      case 'mouseup':
-        window.onmouseup = handler;
-        break;
-      case 'mousemove':
-        window.onmousemove = handler;
-        break;
-    }
+    window.addEventListener(type, handler);
   }
 
   static getBoundingClientRect(tag) {
-    const x = this.findX(tag);
-    const y = this.findY(tag);
+    const x = this.findXPos(tag);
+    const y = this.findYPos(tag);
     return {x, y};
   }
 }

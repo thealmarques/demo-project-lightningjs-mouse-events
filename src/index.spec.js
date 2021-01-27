@@ -1,6 +1,6 @@
-import { EventUtils } from ".";
+import { MouseEvents } from ".";
 
-describe('EventUtils module', () => {
+describe('MouseEvents module', () => {
     it.each`
         event
         ${'click'}
@@ -14,7 +14,7 @@ describe('EventUtils module', () => {
             y: 0,
         };
         const callback = jest.fn();
-        EventUtils.listen(tag, event, callback);
+        MouseEvents.listen(tag, event, callback);
 
         // When
         window.dispatchEvent(new MouseEvent(event));
@@ -35,7 +35,7 @@ describe('EventUtils module', () => {
     };
 
     // When
-    const coordinates = EventUtils.getBoundingClientRect(tag);
+    const coordinates = MouseEvents.getBoundingClientRect(tag);
 
     // Then
     expect(coordinates).toEqual({
@@ -53,7 +53,7 @@ describe('EventUtils module', () => {
     };
 
     // When
-    const coordinates = EventUtils.getBoundingClientRect(tag);
+    const coordinates = MouseEvents.getBoundingClientRect(tag);
 
     // Then
     expect(coordinates).toEqual({

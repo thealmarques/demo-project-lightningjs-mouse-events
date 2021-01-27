@@ -1,5 +1,5 @@
 import { Lightning } from "wpe-lightning-sdk";
-import { EventUtils } from "./lib/EventUtils.js";
+import { MouseEvents } from "../../src/index.js";
 import Utils from "./lib/GameUtils.js";
 
 export default class Game extends Lightning.Component {
@@ -66,14 +66,14 @@ export default class Game extends Lightning.Component {
     });
 
 
-    EventUtils.listen(this.tag("Game"), 'mousemove', (_, event) => {
+    MouseEvents.listen(this.tag("Game"), 'mousemove', (_, event) => {
       const idx = this.calculatePlayerPosition(event);
       if (idx >= 0) {
         this._setIndex(idx);
       }
     });
 
-    EventUtils.listen(this.tag("Game"), 'click', (_, event) => {
+    MouseEvents.listen(this.tag("Game"), 'click', (_, event) => {
       const idx = this.calculatePlayerPosition(event);
       if (idx >= 0) {
         this._setIndex(idx);
@@ -84,7 +84,7 @@ export default class Game extends Lightning.Component {
 
 
   calculatePlayerPosition(event) {
-    const fieldCoordinates = EventUtils.getBoundingClientRect(this.tag("Field"));
+    const fieldCoordinates = MouseEvents.getBoundingClientRect(this.tag("Field"));
 
     let index = 0;
     for (let row = 1; row <= 3; row++) {

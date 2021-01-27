@@ -1,4 +1,5 @@
 import { Lightning } from "wpe-lightning-sdk";
+import { MouseEvents } from "../../../src/index.js";
 import Item from "./Item.js";
 
 export default class Menu extends Lightning.Component{
@@ -60,5 +61,26 @@ export default class Menu extends Lightning.Component{
 
         // store new index
         this._index = idx;
+    }
+
+    _active() {
+        MouseEvents.listen(this.parent.tag("Menu"), 'mousemove', (element, _) => {
+            if (element && element.action) {
+                switch(element.action) {
+                    case 'start':
+                        this._setIndex(0);
+                        break;
+                    case 'continue':
+                        this._setIndex(1);
+                        break;
+                    case 'about':
+                        this._setIndex(2);
+                        break;
+                    case 'exit':
+                        this._setIndex(3);
+                        break;
+                }
+            }
+        });
     }
 }
