@@ -1,7 +1,8 @@
 # Mouse events library for [LightningJS](https://github.com/rdkcentral/Lightning)
 [![Build Status](https://travis-ci.com/thealmarques/lightningjs-mouse-events.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-Library intended to replicate mouse events that we would have with our multiple HTML tags that build up a page.
+This library replicates mouse events in LightningJS. It's very similar to what we would have on our web page with multiple HTML elements. Since LightningJS uses canvas to draw the components and these don't have the concept of mouse events, it only supports key events (up, down, left, right) we need a new level of abstraction that can help us replicate the so needed mouse events handlers.
+Hopefully, this library will give you this abstraction and hide the logic that will help you give more support for the multiple TVs that allows mouse controls (like the magic mouse in LG).
 
 # Features
 
@@ -13,7 +14,7 @@ The library currently supports at 100% the following mouse events
 
 # How it works
 
-In the [LightningJS docs](https://rdkcentral.github.io/Lightning/docs/introduction/introduction) we can see that the elements that compose our application are built using the concept of tags. All of these tags have screen positions (encapsulated within each other).
+In the [LightningJS docs](https://rdkcentral.github.io/Lightning/docs/introduction/introduction) we can see that the elements that compose our application are built using the concept of tags. All of these tags have screen positions (encapsulated within each other, single elements, etc.).
 
 For example,
 ```sh
@@ -35,7 +36,7 @@ For now, you only need to export the src files into your project. In the future,
 
 ### Demo
 
-To test the demo project you need to
+To test the demo project (it's based on the official documents, you can see the original demo [here](https://rdkcentral.github.io/Lightning/docs/gettingStarted/development-tictactoe)) you need to
 
 ```sh
 $ cd demo
