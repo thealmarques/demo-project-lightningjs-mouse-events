@@ -1,5 +1,5 @@
 # Mouse events library for [LightningJS](https://github.com/rdkcentral/Lightning)
-[![Build Status](https://travis-ci.com/thealmarques/lightningjs-mouse-events.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+[![Build Status](https://travis-ci.com/thealmarques/lightningjs-mouse-events.svg?branch=master)
 
 This library replicates mouse events in LightningJS. It's very similar to what we would have on our web page with multiple HTML elements. Since LightningJS uses canvas to draw the components and these don't have the concept of mouse events, it only supports key events (up, down, left, right) we need a new level of abstraction that can help us replicate the so needed mouse events handlers.
 Hopefully, this library will give you this abstraction and hide the logic that will help you give more support for the multiple TVs that allows mouse controls (like the magic mouse in LG).
